@@ -1,0 +1,21 @@
+#LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'zh'
+
+LANGUAGES = (
+  ('zh','Chinese'),
+  ('en','English'),
+)
+
+LOCALE_PATH = os.path.join(BASE_DIR,'locale')
+LOCALE_PATHS = [
+    LOCALE_PATH,
+]
+
+apt-get install fcitx-googlepinyin
+im-config
+Google-Pinyin. Press OK. 
+
+db
+=================
+SELECT default_character_set_name FROM information_schema.SCHEMATA 
+WHERE schema_name = "ocbl";
