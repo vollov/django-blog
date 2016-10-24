@@ -30,7 +30,7 @@ urlpatterns = [
 #     url(r'^contacts/', views.contacts, name='contacts'),
 #     
 #     # modules urls
-#     url(r'^accounts/', include('accounts.urls')),
+    url(r'^blog/', include('blog.urls')),
 #     url(r'^team/', include('team.urls')),
 #     url(r'^game/', include('game.urls')),
     

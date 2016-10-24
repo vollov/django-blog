@@ -91,7 +91,6 @@ DATABASES = {
     }
 }
 
-
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
 
@@ -114,7 +113,12 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'en'
+
+LANGUAGES = (
+  ('en','English'),
+  ('zh','Chinese'),
+)
 
 TIME_ZONE = 'UTC'
 
@@ -123,8 +127,8 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-#RESOURCE_ROOT='/opt/www/blogger/'
-RESOURCE_ROOT='e:/opt/var/www/blogger/'
+RESOURCE_ROOT='/opt/www/blogger/'
+#RESOURCE_ROOT='e:/opt/var/www/blogger/'
 
 LOGGING = {
     'version': 1,
@@ -143,7 +147,13 @@ LOGGING = {
             'class': 'logging.StreamHandler',
             'formatter': 'simple',
         },
-        'accounts.logfile': {
+        'audit.logfile': {
+            'level': 'INFO',
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(RESOURCE_ROOT,'logs/audit.log'),
+            'formatter': 'verbose',
+        },
+        'debug.logfile': {
             'level': 'DEBUG',
             'class': 'logging.FileHandler',
             'filename': os.path.join(RESOURCE_ROOT,'logs/debug.log'),
@@ -157,13 +167,13 @@ LOGGING = {
         },
     },
     'loggers': {
-        'accounts': {
-            'handlers': ['accounts.logfile', 'console'],
+        'blog': {
+            'handlers': ['debug.logfile', 'console'],
             'level': 'DEBUG',
             'propagate': True,
         },
         'app': {
-            'handlers': ['accounts.logfile', 'console'],
+            'handlers': ['debug.logfile', 'console'],
             'level': 'DEBUG',
             'propagate': True,
         },

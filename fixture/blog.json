@@ -1,0 +1,100 @@
+[
+{
+    "model": "blog.tag",
+    "pk": 1,
+    "fields": {
+        "name": "Django",
+        "slug": "django",
+        "created_at": "2016-10-23T17:29:37Z",
+        "active": false
+    }
+},
+{
+    "model": "blog.tag",
+    "pk": 2,
+    "fields": {
+        "name": "nodejs",
+        "slug": "nodejs",
+        "created_at": "2016-10-23T17:29:48Z",
+        "active": false
+    }
+},
+{
+    "model": "blog.tag",
+    "pk": 3,
+    "fields": {
+        "name": "Angularjs",
+        "slug": "angularjs",
+        "created_at": "2016-10-23T17:29:57Z",
+        "active": false
+    }
+},
+{
+    "model": "blog.blog",
+    "pk": 1,
+    "fields": {
+        "title": "How to write a blog web site with django",
+        "slug": "how-write-blog-web-site-django",
+        "body": "## How to write a blog web site with django",
+        "views": 0,
+        "author": 2,
+        "published": false,
+        "created_at": "2016-10-23T17:30:14Z",
+        "updated_at": "2016-10-23T17:32:36Z"
+    }
+},
+{
+    "model": "blog.blog",
+    "pk": 2,
+    "fields": {
+        "title": "How to build a node js blog",
+        "slug": "how-build-node-js-blog",
+        "body": "How to build a node js blog",
+        "views": 0,
+        "author": 2,
+        "published": true,
+        "created_at": "2016-10-24T01:40:23Z",
+        "updated_at": "2016-10-24T01:41:29Z"
+    }
+},
+{
+    "model": "blog.blogtag",
+    "pk": "4d0c5fa2-2870-47d2-be5e-9a59889f3e30",
+    "fields": {
+        "blog": 2,
+        "tag": 3,
+        "created_at": "2016-10-24T01:42:05Z",
+        "updated_at": "2016-10-24T01:42:13Z"
+    }
+},
+{
+    "model": "blog.blogtag",
+    "pk": "93a5d407-1e7e-4a7f-b403-f777967c2023",
+    "fields": {
+        "blog": 1,
+        "tag": 3,
+        "created_at": "2016-10-23T17:32:58Z",
+        "updated_at": "2016-10-23T17:33:07Z"
+    }
+},
+{
+    "model": "blog.blogtag",
+    "pk": "cb9a94e7-29a5-41df-84fa-47d449b7ee2b",
+    "fields": {
+        "blog": 2,
+        "tag": 2,
+        "created_at": "2016-10-24T01:41:48Z",
+        "updated_at": "2016-10-24T01:42:02Z"
+    }
+},
+{
+    "model": "blog.blogtag",
+    "pk": "f7cb943f-4171-4476-aa6a-58977503b23c",
+    "fields": {
+        "blog": 1,
+        "tag": 1,
+        "created_at": "2016-10-23T17:32:45Z",
+        "updated_at": "2016-10-23T17:32:55Z"
+    }
+}
+]

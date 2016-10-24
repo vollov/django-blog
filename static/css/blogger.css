@@ -1,0 +1,14 @@
+body {
+	font-family: Arial, Helvetica, verdana, arial, sans-serif;
+	font-size: 16px;
+	border: 0 none;
+	padding-top: 50px;
+}
+
+footer {
+	font-size: 12px;
+}
+
+.starter-template {
+	padding: 40px 15px;
+}
