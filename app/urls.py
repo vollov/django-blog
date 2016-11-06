@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from rest_framework.urlpatterns import format_suffix_patterns
 
 import views
 
@@ -37,6 +38,7 @@ urlpatterns = [
     url(r'^captcha/', include('captcha.urls')),
 ]
 
+urlpatterns = format_suffix_patterns(urlpatterns)
 
 # settings for development environment DEBUG
 from django.conf.urls.static import static

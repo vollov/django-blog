@@ -1,10 +1,10 @@
 from django.conf.urls import url
 
-from team import views
+from blog import views
 
 urlpatterns = [
     #url(r'^$', views.teams, name='teams'),
     #url(r'^enroll/$', views.post_enroll, name='post_enroll'),
-    url(r'^(?P<blog_id>[^/]+)$', views.blog_markdown, name='blog_markdown'),
-    
+    url(r'^api/(?P<blog_slug>[^/]+)$', views.blog_detail_api, name='blog_detail_api'),
+    url(r'^(?P<blog_slug>[^/]+)$', views.blog_detail, name='blog_detail'),
 ]

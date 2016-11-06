@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'captcha',
     'crispy_forms',
+    'rest_framework',
     'blog',
 ]
 
@@ -127,8 +128,8 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-RESOURCE_ROOT='/opt/www/blogger/'
-#RESOURCE_ROOT='e:/opt/var/www/blogger/'
+#RESOURCE_ROOT='/opt/www/blogger/'
+RESOURCE_ROOT='e:/opt/var/www/blogger/'
 
 LOGGING = {
     'version': 1,
