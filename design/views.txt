@@ -2,3 +2,6 @@
 user profile [/profile/user_id]
 - show new post 
 - list profile belongs to current user
+
+REST
+===================

@@ -24,18 +24,21 @@ urlpatterns = [
     
 #     # base page
     url(r'^$', views.home, name='home'),
-#     url(r'^profile/', views.profile, name='profile'),
     url(r'^privacy/', views.privacy, name='privacy'),
     url(r'^terms/', views.terms, name='terms'),
+    
+    # modules urls
+    url(r'^blog/', include('blog.urls')),
+    url(r'^captcha/', include('captcha.urls')),
+    
+    #     url(r'^profile/', views.profile, name='profile'),
 #     url(r'^rules/', views.rules, name='rules'),
 #     url(r'^contacts/', views.contacts, name='contacts'),
 #     
-#     # modules urls
-    url(r'^blog/', include('blog.urls')),
 #     url(r'^team/', include('team.urls')),
 #     url(r'^game/', include('game.urls')),
     
-    url(r'^captcha/', include('captcha.urls')),
+    
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
