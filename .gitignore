@@ -3,6 +3,14 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# Eclipe project files
+.project
+.pydevproject
+.settings/
+
+# js components
+bower_components/
+
 # C extensions
 *.so
 

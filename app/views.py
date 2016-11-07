@@ -14,15 +14,15 @@ from service import BlogService
 def home(request):
     """Listing all posts by popularity"""
     
-    blogs = Blog.objects.filter(published=True).order_by('views','id')
-    blogService = BlogService()
+#     blogs = Blog.objects.filter(published=True).order_by('views','id')
+#     blogService = BlogService()
 
     
     context = {
-        'page_title': _('Home'),
-        'blogs':blogService.get_blogs_for_view(blogs),
+#         'page_title': _('Home'),
+#         'blogs':blogService.get_blogs_for_view(blogs),
     }
-    return render(request,'home.html', context)
+    return render(request,'index.html', context)
 
 def privacy(request):
 

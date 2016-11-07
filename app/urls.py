@@ -17,19 +17,31 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from rest_framework.urlpatterns import format_suffix_patterns
 
+from blog.views import BlogViewSet, TagViewSet
+from rest_framework import routers
+
+router = routers.SimpleRouter()
+router.register(r'blogs', BlogViewSet)
+
+query_blogs_by_tag = TagViewSet.as_view({'get': 'query'})
+
 import views
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
+#     url(r'^admin/', admin.site.urls),
     
-#     # base page
-    url(r'^$', views.home, name='home'),
-    url(r'^privacy/', views.privacy, name='privacy'),
-    url(r'^terms/', views.terms, name='terms'),
+    url(r'^api/v1.0/', include(router.urls)),
+    url(r'^api/v1.0/tag/(?P<tag_slug>[^/]+)$', query_blogs_by_tag),
+    
+    # base page
+#     url(r'^privacy/', views.privacy, name='privacy'),
+#     url(r'^terms/', views.terms, name='terms'),
+#    url(r'^api/v1.0/blogs', include('blog.apis')),
+#     url(r'^$', views.home, name='home'),
     
     # modules urls
-    url(r'^blog/', include('blog.urls')),
-    url(r'^captcha/', include('captcha.urls')),
+#     url(r'^blog/', include('blog.urls')),
+#     url(r'^captcha/', include('captcha.urls')),
     
     #     url(r'^profile/', views.profile, name='profile'),
 #     url(r'^rules/', views.rules, name='rules'),

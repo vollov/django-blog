@@ -1,0 +1,38 @@
+<h1>Issue Notes</h1>
+
+<div class="menu">
+	<form class="navbar-form navbar-left">
+		<div class="form-group">
+			<input type="text" placeholder="Search By Key Word" ng-model="query" class="form-control">
+		</div>
+	</form>
+</div>
+
+<table class="table table-bordered table-striped">
+	<thead>
+		<tr>
+			<th># Views</th>
+			<th>Topic</th>
+			<th>Created</th>
+			<th>Author</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-class-even="'even'" ng-class='{selected: $index==selectedRow}'
+			ng-click="selectBlog($index)"
+			ng-repeat="blog in blogs | filter:query | orderBy:'created'">
+			
+			<th scope="row">{{blog.views}}</th>
+			<td>
+				<p><a href="/#/blog/view/{{blog.id}}">{{ blog.title | limitTo: 70 }}</a><p>
+				<p>
+					{% for tag in blog.tag_set %}
+					<a class="btn btn-default btn-xs" href="/#/tag/{{tag.id}}" role="button">{{tag.name}}</a>
+					{% endfor %} 
+				<p>
+			</td>
+			<td>{{ blog.created_at | date:'yyyy-MM-dd (HH)' }}</td>
+			<td>{{ blog.author }}</td>
+		<tr>
+	</tbody>
+</table>

@@ -11,8 +11,8 @@ class Tag(models.Model):
     id = models.CharField(max_length=64, primary_key=True, verbose_name=u"Activation key",
                  default=uuid.uuid4)
     
-    name = models.CharField(max_length=100, db_index=True)
-    slug = models.SlugField(max_length=100, db_index=True)
+    name = models.CharField(max_length=100, unique=True, db_index=True)
+    slug = models.SlugField(max_length=100, unique=True, db_index=True)
     created_at = models.DateTimeField(default=datetime.now, blank=True)
     active = models.BooleanField(default=False)
     
