@@ -20,24 +20,24 @@ from rest_framework.urlpatterns import format_suffix_patterns
 from blog.views import BlogViewSet, TagViewSet
 from rest_framework import routers
 
-router = routers.SimpleRouter()
-router.register(r'blogs', BlogViewSet)
-
-query_blogs_by_tag = TagViewSet.as_view({'get': 'query'})
+api_query_blogs_by_tag = TagViewSet.as_view({'get': 'query'})
+api_list_blogs = BlogViewSet.as_view({'get': 'list'})
+api_blog_detail = BlogViewSet.as_view({'get': 'detail'})
 
 import views
 
 urlpatterns = [
-#     url(r'^admin/', admin.site.urls),
+    url(r'^admin/', admin.site.urls),
     
-    url(r'^api/v1.0/', include(router.urls)),
-    url(r'^api/v1.0/tag/(?P<tag_slug>[^/]+)$', query_blogs_by_tag),
+    url(r'^api/v1.0/blogs/', api_list_blogs, name='api_list_blogs'),
+    url(r'^api/v1.0/tag/(?P<tag_slug>[^/]+)$', api_query_blogs_by_tag, name = 'api_query_blogs_by_tag'),
+    url(r'^api/v1.0/blog/(?P<blog_slug>[^/]+)$', api_blog_detail, name = 'api_blog_detail'),
     
     # base page
 #     url(r'^privacy/', views.privacy, name='privacy'),
 #     url(r'^terms/', views.terms, name='terms'),
 #    url(r'^api/v1.0/blogs', include('blog.apis')),
-#     url(r'^$', views.home, name='home'),
+    url(r'^$', views.home, name='home'),
     
     # modules urls
 #     url(r'^blog/', include('blog.urls')),

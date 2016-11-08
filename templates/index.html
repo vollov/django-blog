@@ -46,7 +46,7 @@
 			<div id="navbar" class="navbar-collapse collapse">
 
 				<ul class="nav navbar-nav navbar-left">
-					<li><a href="/#/">{% trans "home" %}</a></li>
+					<li><a href="/#/home">{% trans "home" %}</a></li>
 					<li><a href="/#/about">{% trans "about" %}</a></li>
 				</ul>
 				
@@ -68,7 +68,7 @@
 			</p>
 			<p>
 				Copyright &copy; 2016 vollov.ca All Rights Reserved. Designed by: <a href="http://www.vollov.ca">Dustin</a> &middot; <a href="/#/privacy">
-				{% trans "privacy_policy"%}</a> &middot; <a href="/#/terms">{% trans "terms"%}</a>
+				{% trans "privacy policy"%}</a> &middot; <a href="/#/terms">{% trans "terms"%}</a>
 			</p>
 		</footer>
 	</div>
@@ -81,10 +81,11 @@
 	<script type="text/javascript" src="{% static 'bower_components/marked/lib/marked.js' %}"></script>
 	<script type="text/javascript" src="{% static 'bower_components/angular-marked/dist/angular-marked.min.js' %}"></script>
 	
-	<script type="text/javascript" src="{% static 'js/app.js' %}"></script>
+	
 	<script type="text/javascript" src="{% static 'js/blog/service.js' %}"></script>
 	<script type="text/javascript" src="{% static 'js/blog/controller.js' %}"></script>
 	<script type="text/javascript" src="{% static 'js/blog/module.js' %}"></script>
-
+	<script type="text/javascript" src="{% static 'js/app.js' %}"></script>
+	
 </body>
 </html>

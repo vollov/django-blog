@@ -13,9 +13,14 @@ class BlogSerializer(serializers.HyperlinkedModelSerializer):
     
     class Meta:
         model = Blog
-        fields = ('id', 'title', 'published', 'body', 'tags', 'slug', 'author')
+        fields = ('id', 'title', 'published', 'body', 'tags', 'slug', 'author','views', 'created_at')
 
 class BlogTagSerializer(serializers.HyperlinkedModelSerializer):
+    tag = TagSerializer(read_only=True, many=False)
+    blog = BlogSerializer(read_only=True, many=False)
+    
     class Meta:
         model = BlogTag
         fields = ('id', 'tag', 'blog')
+        
+        

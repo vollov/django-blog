@@ -2,10 +2,12 @@
 
 angular.module('markNote', ['ui.router','hc.marked', 'blog'])
 .constant('API', '/api/v1.0/')
-.config(['$stateProvider', '$urlRouterProvider', '$httpProvider', function($stateProvider, $urlRouterProvider, $httpProvider) {
+.constant('STATIC_ROOT','/static')
+.constant('SITE_NAME','vollov.ca')
+.config(['$stateProvider', '$urlRouterProvider', '$httpProvider', 'STATIC_ROOT',function($stateProvider, $urlRouterProvider, $httpProvider, STATIC_ROOT) {
 	$stateProvider.state('blogs', {
-		url : '/blogs',
-		templateUrl : '/views/blog/list.html',
+		url : '/home',
+		templateUrl : STATIC_ROOT + '/views/blog/list.html',
 		controller : 'BlogCtrl',
 		resolve: {
 			postPromise: ['blogService', function(blogService){
@@ -13,25 +15,51 @@ angular.module('markNote', ['ui.router','hc.marked', 'blog'])
 			}]
 		}
 	})
-//	.state('404', {
-//		url : '/404',
-//		templateUrl : '/views/404.html'
-//	})
+	.state('about', {
+		url : '/about',
+		controller : 'AppCtrl',
+		templateUrl : STATIC_ROOT + '/views/about.html'
+	})
+	.state('privacy', {
+		url : '/privacy',
+		controller : 'AppCtrl',
+		templateUrl : STATIC_ROOT + '/views/privacy.html'
+	})
+	.state('terms', {
+		url : '/terms',
+		controller : 'AppCtrl',
+		templateUrl : STATIC_ROOT + '/views/terms.html'
+	})
+	.state('404', {
+		url : '/404',
+		templateUrl : STATIC_ROOT + '/views/404.html'
+	})
 	.state('blog-view', {
-		url : '/blog/view/:id',
-		templateUrl : '/views/blog/view.html',
+		url : '/blog/:slug',
+		templateUrl : STATIC_ROOT + '/views/blog/view.html',
 		controller : 'BlogViewCtrl',
 		resolve : {
-			post : ['$stateParams', 'blogService',
+			blog : ['$stateParams', 'blogService',
 			function($stateParams, blogService) {
-				return blogService.get($stateParams.id);
+				return blogService.get($stateParams.slug);
+			}]
+		}
+	})
+	.state('tag-view', {
+		url : '/tag/:slug',
+		templateUrl : STATIC_ROOT + '/views/blog/list.html',
+		controller : 'BlogCtrl',
+		resolve : {
+			blogs : ['$stateParams', 'blogService',
+			function($stateParams, blogService) {
+				return blogService.getByTag($stateParams.slug);
 			}]
 		}
 	});
 	
 	$httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 	
-	$urlRouterProvider.otherwise('blogs');
+	$urlRouterProvider.otherwise('home');
 }])
 .config(['markedProvider', function (markedProvider) {
 	markedProvider.setOptions({

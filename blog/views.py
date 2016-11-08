@@ -1,9 +1,8 @@
 from django.shortcuts import render
-from blog.models import Blog, Tag, BlogTag
-from blog.rest import BlogSerializer
+from blog.models import Blog, BlogTag
 from rest_framework import viewsets
 from rest_framework.response import Response
-from blog.serializers import BlogSerializer, TagSerializer, BlogTagSerializer
+from blog.serializers import BlogSerializer, BlogTagSerializer
 
 def blog_detail(request, blog_slug):
     """show blog content as markdown - HTTP GET /blog/@blog_id
@@ -24,11 +23,26 @@ class BlogViewSet(viewsets.ViewSet):
         serializer = BlogSerializer(queryset, many=True)
         return Response(serializer.data)
 
-class TagViewSet(viewsets.ViewSet):
+    def detail(self, request, blog_slug, format=None):
+        # increment view each time
+        blog = Blog.objects.get(slug=blog_slug)
+        blog.views +=1
+        blog.save()
+        
+        serializer = BlogSerializer(blog, many=False)
+        return Response(serializer.data)
     
+class TagViewSet(viewsets.ViewSet):
+     
     def query(self, request, tag_slug, format=None):
-        blogs = BlogTag.objects.get(tag__slug=tag_slug)
-        serializer = BlogTagSerializer(blogs, many=True)
+        blog_tags = BlogTag.objects.filter(tag__slug=tag_slug)
+        
+        blogs = []
+        # get the list of blogs
+        for item in blog_tags:
+            blogs.append(item.blog)
+        
+        serializer = BlogSerializer(blogs, many=True)
         return Response(serializer.data)
     
     

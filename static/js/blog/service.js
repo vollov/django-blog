@@ -37,9 +37,16 @@ angular.module('blog.services', [])
 		});
 	};
 	
-	service.get = function(id) {
-		console.log('service get blog by id = %s', id);
-		return $http.get(API + 'blogs/' + id).then(function(res) {
+	service.getByTag = function(slug) {
+		console.log('service get blogs by tag.slug = %s', slug);
+		return $http.get(API + 'tag/' + slug).success(function(data) {
+			angular.copy(data, service.blogs);
+		});
+	};
+	
+	service.get = function(slug) {
+		console.log('service get blog by slug = %s', slug);
+		return $http.get(API + 'blog/' + slug).then(function(res) {
 			return res.data;
 		});
 	};
