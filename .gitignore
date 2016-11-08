@@ -4,8 +4,7 @@ __pycache__/
 *$py.class
 
 # Eclipe project files
-.project
-.pydevproject
+*.project
 .settings/
 
 # js components
@@ -94,3 +93,4 @@ ENV/
 
 # Rope project settings
 .ropeproject
+.pydevproject
