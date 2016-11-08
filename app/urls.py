@@ -18,7 +18,6 @@ from django.contrib import admin
 from rest_framework.urlpatterns import format_suffix_patterns
 
 from blog.views import BlogViewSet, TagViewSet
-from rest_framework import routers
 
 api_query_blogs_by_tag = TagViewSet.as_view({'get': 'query'})
 api_list_blogs = BlogViewSet.as_view({'get': 'list'})
@@ -34,23 +33,7 @@ urlpatterns = [
     url(r'^api/v1.0/blog/(?P<blog_slug>[^/]+)$', api_blog_detail, name = 'api_blog_detail'),
     
     # base page
-#     url(r'^privacy/', views.privacy, name='privacy'),
-#     url(r'^terms/', views.terms, name='terms'),
-#    url(r'^api/v1.0/blogs', include('blog.apis')),
     url(r'^$', views.home, name='home'),
-    
-    # modules urls
-#     url(r'^blog/', include('blog.urls')),
-#     url(r'^captcha/', include('captcha.urls')),
-    
-    #     url(r'^profile/', views.profile, name='profile'),
-#     url(r'^rules/', views.rules, name='rules'),
-#     url(r'^contacts/', views.contacts, name='contacts'),
-#     
-#     url(r'^team/', include('team.urls')),
-#     url(r'^game/', include('game.urls')),
-    
-    
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
@@ -61,7 +44,7 @@ from django.conf import settings
 
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
- 
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 # if settings.DEBUG:
 #     urlpatterns += [
 #         url((r'^media/(?P<path>.*)','django.views.static', {'document_root': settings.MEDIA_ROOT}),'serve')
