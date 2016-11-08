@@ -14,7 +14,7 @@ class Tag(models.Model):
     name = models.CharField(max_length=100, unique=True, db_index=True)
     slug = models.SlugField(max_length=100, unique=True, db_index=True)
     created_at = models.DateTimeField(default=datetime.now, blank=True)
-    active = models.BooleanField(default=False)
+    active = models.BooleanField(default=True)
     
     def __unicode__(self):
         return self.name
@@ -36,7 +36,7 @@ class Blog(models.Model):
     body = models.TextField()
     views = models.IntegerField(default=0)
     author = models.ForeignKey(User, null=True)
-    published = models.BooleanField(default=False)
+    published = models.BooleanField(default=True)
     
     tags = models.ManyToManyField(Tag, through='BlogTag')
     
