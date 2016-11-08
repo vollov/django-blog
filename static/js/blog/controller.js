@@ -22,7 +22,7 @@ function($scope, blogService) {
 .controller('AppCtrl', ['$scope', 'SITE_NAME', function($scope,SITE_NAME) {
 	$scope.site_name = SITE_NAME;
 }])
-.controller('AboutCtrl', ['$scope', function($scope) {
+.controller('AboutCtrl', ['$scope', 'blog', function($scope,blog) {
 	$scope.blog = blog;
 	$scope.markdown_content = blog.body;
 }]);

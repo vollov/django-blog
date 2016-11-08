@@ -19,7 +19,7 @@ def blog_detail(request, blog_slug):
 class BlogViewSet(viewsets.ViewSet):
 
     def list(self, request, format=None):
-        queryset = Blog.objects.all().order_by('-views')
+        queryset = Blog.objects.exclude(slug='about').filter(published=True).order_by('-views')
         serializer = BlogSerializer(queryset, many=True)
         return Response(serializer.data)
 
