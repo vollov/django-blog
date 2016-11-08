@@ -12,3 +12,9 @@ footer {
 .starter-template {
 	padding: 40px 15px;
 }
+
+.md-image-right {
+	float: right;
+	margin: 5px;
+	padding: 10px;
+}
