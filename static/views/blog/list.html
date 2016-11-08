@@ -28,7 +28,7 @@
 			<td>
 				<a ng-repeat="tag in blog.tags" class="btn btn-default btn-xs" href="/#/tag/{{tag.slug}}" role="button">{{tag.name}}</a>
 			</td>
-			<td>{{ blog.created_at | date:'yyyy-MM-dd (HH)' }}</td>
+			<td>{{ blog.created_at | date:'yyyy-MM-dd (HH:mm)' }}</td>
 			<td>{{ blog.author }}</td>
 		<tr>
 	</tbody>
