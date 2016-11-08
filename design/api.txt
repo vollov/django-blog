@@ -25,6 +25,10 @@
     }
 ]
 
+<h3>About</h3>
+  <p><small>Thank you for visiting {{site_name}}. {{site_name}} is committed to maintaining the privacy of our visitors in the way we collect, store and use information about them.</small></p>
+
+
 urlpatterns = [
     #url(r'^enroll/$', views.post_enroll, name='post_enroll'),
     url(r'^(?P<blog_slug>[^/]+)$', views.blog_detail, name='blog_detail'),

@@ -17,8 +17,14 @@ angular.module('markNote', ['ui.router','hc.marked', 'blog'])
 	})
 	.state('about', {
 		url : '/about',
-		controller : 'AppCtrl',
-		templateUrl : STATIC_ROOT + '/views/about.html'
+		controller : 'AboutCtrl',
+		templateUrl : STATIC_ROOT + '/views/about.html',
+		resolve : {
+			blog : ['blogService',
+			function(blogService) {
+				return blogService.get('about');
+			}]
+		}
 	})
 	.state('privacy', {
 		url : '/privacy',
