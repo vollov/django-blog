@@ -128,8 +128,8 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-#RESOURCE_ROOT='/opt/www/freeward/'
-RESOURCE_ROOT='e:/opt/var/www/freeward/'
+RESOURCE_ROOT='/opt/www/freeward/'
+#RESOURCE_ROOT='e:/opt/var/www/freeward/'
 
 LOGGING = {
     'version': 1,
