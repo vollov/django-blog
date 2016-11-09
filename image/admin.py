@@ -16,7 +16,7 @@ class AlbumnAdmin(admin.ModelAdmin):
         ''' 
         logger.debug('albumn admin model save')
         
-        obj.slug = slugify(form.cleaned_data['slug']).replace('-','_')
+        obj.slug = slugify(form.cleaned_data['slug'])#.replace('-','_')
         obj.save()
 
 admin.site.register(Albumn, AlbumnAdmin)
