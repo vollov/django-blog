@@ -23,9 +23,9 @@ admin.site.register(Albumn, AlbumnAdmin)
 
 class ImageAdmin(admin.ModelAdmin):
     readonly_fields = ('image_thumb',)
-    search_fields = ["albumn"]  
+    search_fields = ["albumn"]
+    list_filter = ['albumn']
     
-    
-    list_display = ['image_key', 'albumn','name', 'image_thumb', 'created', 'active']
+    list_display = ['image_key', 'albumn', 'name','image', 'image_thumb', 'created', 'active']
      
 admin.site.register(Image, ImageAdmin)
