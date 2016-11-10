@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from blog.models import Blog, Tag, BlogTag
+from blog.models import Blog, Tag, BlogTag, Course
 
 class BlogAdmin(admin.ModelAdmin):
     exclude = ['posted']
@@ -24,3 +24,8 @@ class BlogTagAdmin(admin.ModelAdmin):
     list_filter = ['tag','created_at']
     
 admin.site.register(BlogTag, BlogTagAdmin)
+
+class CourseAdmin(admin.ModelAdmin):
+    list_display = ['name', 'parent']
+
+admin.site.register(Course, CourseAdmin)

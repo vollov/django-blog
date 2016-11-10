@@ -9,3 +9,4 @@ six==1.10.0
 unittest-xml-reporting==2.1.0
 wsgiref==0.1.2
 gunicorn==19.3.0
+django-mptt==0.8.6

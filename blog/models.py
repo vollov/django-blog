@@ -1,12 +1,23 @@
 from __future__ import unicode_literals
 
 from django.db import models
+from mptt.models import MPTTModel, TreeForeignKey
 
 from django.db.models import permalink
 from django.contrib.auth.models import User
 import uuid
 from datetime import datetime 
 
+class Course(MPTTModel):
+    name = models.CharField(max_length=10, unique=True)
+    parent = TreeForeignKey('self', null=True, blank=True, related_name='children', db_index=True)
+
+    class MPTTMeta:
+        order_insertion_by = ['name']
+        
+    def __unicode__(self):
+        return self.name
+    
 class Tag(models.Model):
     id = models.CharField(max_length=64, primary_key=True, verbose_name=u"Activation key",
                  default=uuid.uuid4)
@@ -37,6 +48,7 @@ class Blog(models.Model):
     views = models.IntegerField(default=0)
     author = models.ForeignKey(User, null=True)
     published = models.BooleanField(default=True)
+    course = models.ForeignKey(Course, null=True)
     
     tags = models.ManyToManyField(Tag, through='BlogTag')
     
@@ -67,3 +79,4 @@ class BlogTag(models.Model):
     class Meta:
         db_table = 'blog_tag'
         ordering = ['-created_at']
+        
