@@ -1,3 +1,3 @@
 'use strict';
 
-angular.module('blog', ['blog.controllers']);
+angular.module('auth', ['user.controllers']);

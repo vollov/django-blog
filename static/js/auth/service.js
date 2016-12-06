@@ -5,17 +5,19 @@ angular.module('user.services', [])
 	
 	var service = {
 			users : [], 
-			groups : []
+			groups : [],
+			userInSync : false,
 	};
 
 	// if user was requested, return it.
 	// else start a new http request.
 	service.getAll = function() {
-
-		return $http.get(API + 'users')
-		.success(function(data) {
-			angular.copy(data, service.users);
-		});
+		if(!userInSync){
+			return $http.get(API + 'users')
+				.success(function(data) {
+				angular.copy(data, service.users);
+			});	
+		}
 	};
 	
 	service.getTags = function() {
@@ -26,18 +28,24 @@ angular.module('user.services', [])
 	};
 	
 	service.create = function(user) {
-		return $http.post(API + 'users', user).success(function(data){
+		var promise =  $http.post(API + 'users', user).success(function(data){
 			service.users.push(data);
+			service.userInSync = true;
 		});
+
+		return promise;
 	};
 	
 	service.update = function(user, id) {
 		console.log('service put user by id = %s', id);
-		return $http.put(API + 'users/' + id, user).success(function(data){
+		var promise =  $http.put(API + 'users/' + id, user).success(function(data){
 			//service.users.push(data);
+			
 			console.log('put return res=%j', data);
 			return data;
 		});
+
+		return promise;
 	};
 	
 	service.getByTag = function(slug) {

@@ -1,0 +1,11 @@
+<div class="row text-justify">
+	<h2>{{ blog.title }}  </h2>
+	<p>{{blog.created_at | date:'yyyy-MM-dd (HH:mm)'}} by {{blog.author}}</div>
+	<p>Tags : 
+		<a ng-repeat="tag in blog.tags" class="btn btn-default btn-xs" href="/#/tag/{{tag.slug}}" role="button">{{tag.name}}</a>
+	</p>
+	<br>
+	<div marked="markdown_content">
+	</div>
+</div>
+

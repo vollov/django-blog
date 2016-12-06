@@ -1,0 +1,32 @@
+<div class="menu">
+	<form class="navbar-form navbar-left">
+		<div class="form-group">
+			<input type="text" placeholder="Search By Key Word" ng-model="query" class="form-control">
+		</div>
+	</form>
+</div>
+
+<table class="table">
+	<thead>
+		<tr>
+			<th># Views</th>
+			<th>name</th>
+			<th>email</th>
+
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-class-even="'even'" ng-class='{selected: $index==selectedRow}'
+			ng-click="selectUser($index)"
+			ng-repeat="u in users | filter:query | orderBy:'pk'">
+			
+			<th scope="row">{{$index}}</th>
+			<td>
+				<a href="/#/user/{{u.pk}}">{{ u.name | limitTo: 70 }}</a>
+			</td>
+			<td>
+				{{u.email}}</a>
+			</td>
+		<tr>
+	</tbody>
+</table>

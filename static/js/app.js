@@ -15,6 +15,16 @@ angular.module('markNote', ['ui.router','hc.marked', 'blog'])
 			}]
 		}
 	})
+	.state('users', {
+		url : '/users',
+		templateUrl : STATIC_ROOT + '/views/auth/list.html',
+		controller : 'userCtrl',
+		resolve: {
+			userPromise: ['userService', function(userService){
+				return userService.getAll();
+			}]
+		}
+	})
 	.state('about', {
 		url : '/about',
 		controller : 'AboutCtrl',
@@ -40,6 +50,7 @@ angular.module('markNote', ['ui.router','hc.marked', 'blog'])
 		url : '/404',
 		templateUrl : STATIC_ROOT + '/views/404.html'
 	})
+
 	.state('blog-view', {
 		url : '/blog/:slug',
 		templateUrl : STATIC_ROOT + '/views/blog/view.html',

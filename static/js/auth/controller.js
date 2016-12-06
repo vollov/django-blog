@@ -1,28 +1,17 @@
 'use strict';
 
-angular.module('blog.controllers', [ 'blog.services'])
-.controller('BlogCtrl', ['$scope', 'blogService',
-function($scope, blogService) {
-	$scope.blogs = blogService.blogs;
+angular.module('user.controllers', [ 'user.services'])
+.controller('userCtrl', ['$scope', 'userService',
+function($scope, userService) {
+	$scope.users = userService.users;
 
-	$scope.selectBlog = function(row) {
+	$scope.selectUser = function(row) {
 		$scope.selectedRow = row;
 	};
 	
-	$scope.deletePost = function(blog, index) {
-		//console.log('delete blog by id='+ blog._id);
-		blogService.deleteById(blog.id);
-		$scope.blogs.splice(index, 1);
+	$scope.deleteUser = function(user, index) {
+		//console.log('delete user by id='+ user._id);
+		userService.deleteById(user.id);
+		$scope.users.splice(index, 1);
 	};
-}])
-.controller('BlogViewCtrl', ['$scope', 'blog', function($scope,blog) {
-	$scope.blog = blog;
-	$scope.markdown_content = blog.body;
-}])
-.controller('AppCtrl', ['$scope', 'SITE_NAME', function($scope,SITE_NAME) {
-	$scope.site_name = SITE_NAME;
-}])
-.controller('AboutCtrl', ['$scope', 'blog', function($scope,blog) {
-	$scope.blog = blog;
-	$scope.markdown_content = blog.body;
 }]);

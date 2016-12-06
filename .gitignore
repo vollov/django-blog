@@ -6,7 +6,7 @@ __pycache__/
 # Eclipe project files
 *.project
 .settings/
-
+node_modules/
 # js components
 bower_components/
 
