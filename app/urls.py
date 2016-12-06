@@ -25,9 +25,19 @@ api_blog_detail = BlogViewSet.as_view({'get': 'detail'})
 
 import views
 
+from api.views import UserViewSet, GroupViewSet
+from rest_framework import routers
+
+#router = routers.DefaultRouter()
+router = routers.SimpleRouter()
+router.register(r'users', UserViewSet)
+router.register(r'groups', GroupViewSet)
+
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     
+    url(r'^api/v1.0/', include(router.urls)),
     url(r'^api/v1.0/blogs/', api_list_blogs, name='api_list_blogs'),
     url(r'^api/v1.0/tag/(?P<tag_slug>[^/]+)$', api_query_blogs_by_tag, name = 'api_query_blogs_by_tag'),
     url(r'^api/v1.0/blog/(?P<blog_slug>[^/]+)$', api_blog_detail, name = 'api_blog_detail'),

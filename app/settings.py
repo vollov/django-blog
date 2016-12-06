@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'mptt',
     'blog',
     'image',
+    'api',
 ]
 
 MIDDLEWARE = [
@@ -130,8 +131,8 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-RESOURCE_ROOT='/opt/www/freeward/'
-#RESOURCE_ROOT='e:/opt/var/www/freeward/'
+#RESOURCE_ROOT='/opt/www/freeward/'
+RESOURCE_ROOT='c:/test/freeward/'
 
 LOGGING = {
     'version': 1,
